@@ -1,0 +1,18 @@
+source("http://zzlab.net/GAPIT/GAPIT.library.R")
+source("http://zzlab.net/GAPIT/gapit_functions.txt")
+setwd("/zfs/dilthavar/ssalari/ADMIX")
+myY <- read.delim ("bayesian_blups.tsv", head=T)             # CHANGE
+myG <- read.delim("CP.final.hapmap.hmp.txt", head = FALSE)
+
+#Step 2: Run GAPIT
+myGAPIT <- GAPIT(
+                 Y=myY[,c(1,2)],
+                 G=myG,
+                 PCA.total=5,
+                 model=c("MLM"),
+                 SNP.MAF=0.05,
+                 SNP.FDR=0.05,
+                 ncpus=4
+                 )
+
+
