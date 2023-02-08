@@ -1,0 +1,35 @@
+
+library(readr)
+library(RColorBrewer)
+library(ggplot2)
+# I had a dataframe (GAPIT.Genotype.origin.PCA.csv) with the following columns: AccessionID, PCA1, PCA2, group
+# "group" was the admixture group of the accession.
+# A column with country of origin
+
+#### GGPLOT Admixture Plot ####
+# sorted_df was converted to 4 columns in excel
+# columns: order, taxa, percent, group
+
+read.csv("all_admix1.csv")
+ggplotADMIX <- read.csv("all_admix1.csv")
+head(ggplotADMIX)
+colnames(ggplotADMIX) <- c("order", "taxa", "percent", "group")
+str(ggplotADMIX)
+ggplotADMIX[,4] <- as.factor(ggplotADMIX[,4])
+ggplot(ggplotADMIX, aes(fill=group, y=percent, x=reorder(taxa,order))) +
+geom_bar(position = "fill", stat = "identity", width = 1, show.legend = TRUE) +
+theme_bw() + 
+labs(x = "Individuals", y = "Ancestry")+
+scale_fill_brewer(palette="Set1")+
+theme(axis.title.x = element_blank()) +
+scale_y_continuous(expand = c(0,0))
+
+
+
+
+
+
+
+
+
+  
