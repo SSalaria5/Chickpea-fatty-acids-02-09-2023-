@@ -12,7 +12,7 @@ head(df)
 bayesian_blups <- df[,c(5,6)]
 for (trait in c("PalmiticAcid","LinoleicAcid","AlphaLinolenicAcid","OleicAcid")){
   stan.model <- stan_lmer(paste0(trait, 
-                                " ~ (1|GenotypeNum) + (1|Block:Site:Rep) + (1|Rep:Site) + (1|Site) + (1|GenotypeNum:Site)"), 
+                                " ~ (1|GenotypeNum) + (1|Block:Exp:Rep) + (1|Rep:Exp) + (1|Exp) + (1|GenotypeNum:Exp)"), 
            data=df, adapt_delta = 0.99, seed=324)
   blups <- ranef(stan.model)$GenotypeNum
   blups$GenotypeNum <- rownames(blups)
