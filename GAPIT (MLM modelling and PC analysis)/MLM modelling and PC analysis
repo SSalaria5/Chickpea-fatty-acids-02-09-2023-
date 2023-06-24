@@ -9,7 +9,7 @@ myGAPIT <- GAPIT(
                  Y=myY[,c(1,2)],
                  G=myG,
                  PCA.total=5,
-                 model=c("MLM"),
+                 model=c("BLINK", "MLM"),
                  SNP.MAF=0.05,
                  SNP.FDR=0.05,
                  ncpus=4
