@@ -17,6 +17,14 @@ ggplot(OriginPCA, aes(PC1, PC2, shape= subpopulation, color=subpopulation)) +
   theme(panel.grid.minor = element_blank())
 
 
+#PCA Type
+OriginPCA$Type <- as.factor(OriginPCA$Type)
+ggplot(OriginPCA, aes(PC1, PC2, color=Type)) +
+  geom_point(size=2, show.legend = TRUE) +
+  scale_color_brewer(palette="Dark2")+
+  #scale_color_okabe_ito(order = 1:6) +
+  theme_bw() +
+  theme(panel.grid.minor = element_blank())
 
 #PCA Origin
 OriginPCA$subpopulation <- as.factor(OriginPCA$Origin)
